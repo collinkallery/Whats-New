@@ -1,0 +1,43 @@
+.article-card {
+  width: 90%;
+  background-color: #252323;
+  text-align: left;
+  font-family: 'Open Sans Condensed', sans-serif;
+  border: .1px solid #333030;
+  margin: 1vw;
+  padding: 1.5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: white;
+}
+
+.article-image {
+  width: 100%;
+  height: 100%;
+}
+
+.article-image-container {
+  width: 100%;
+  height: 40%
+}
+
+.article-headline {
+  font-size: 1.2em;
+  padding: .7vw;
+  margin: .5vw;
+  border-bottom: 2px solid white;
+}
+
+.article-description {
+  padding: .8vw;
+  font-size: .8em;
+}
+
+.article-button {
+  align-self: center;
+  font-family: 'Open Sans Condensed', sans-serif;
+  margin: .3vw;
+  padding: .3vw;
+  font-size: .9em;
+}
