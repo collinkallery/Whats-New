@@ -3,9 +3,9 @@ import NewsArticle from '../NewsArticle/NewsArticle';
 import SearchForm from '../SearchForm/SearchForm';
 import './NewsContainer.css'
 
-const NewsContainer = ({all, entertainment, health, local, science, technology}) => {
+const NewsContainer = ({currentArticles}) => {
 
-  const localArticles = local.map(article => {
+  const articlesToDisplay = currentArticles.map(article => {
     return (
       <NewsArticle
         id={article.id}
@@ -22,7 +22,7 @@ const NewsContainer = ({all, entertainment, health, local, science, technology})
     <div className="article-search-container">
       <SearchForm />
       <div className="article-container">
-        {localArticles}
+        {articlesToDisplay}
         </div>
     </div>
   )

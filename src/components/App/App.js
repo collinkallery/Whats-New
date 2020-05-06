@@ -21,6 +21,7 @@ class App extends Component {
     const localArticles = [...Local];
     const scienceArticles = [...Science];
     const techArticles = [...Technology];
+    const currentArticles = [];
 
     this.state = {
       allArticles: allArticles,
@@ -28,12 +29,27 @@ class App extends Component {
       healthArticles: healthArticles,
       localArticles: localArticles,
       scienceArticles: scienceArticles,
-      techArticles: techArticles
+      techArticles: techArticles,
+      currentArticles: localArticles
     }
   }
 
-  displayArticlesByCategory = () => {
-    
+  displayCurrentArticles = (articles) => {
+    if (articles === 'local') {
+      this.setState({currentArticles: this.state.localArticles});
+    }
+    if (articles === 'entertainment') {
+      this.setState({currentArticles: this.state.entertainmentArticles});
+    }
+    if (articles === 'health') {
+      this.setState({currentArticles: this.state.healthArticles});
+    }
+    if (articles === 'science') {
+      this.setState({currentArticles: this.state.scienceArticles});
+    }
+    if (articles === 'tech') {
+      this.setState({currentArticles: this.state.techArticles});
+    }
   }
 
   render () {
@@ -41,15 +57,10 @@ class App extends Component {
       <div className="app">
         <Header />
         <div className="main">
-          <Menu />
+          <Menu displayCurrentArticles={this.displayCurrentArticles} />
           <div className="news-container">
             <NewsContainer
-              all={this.state.allArticles}
-              entertainment={this.state.entertainmentArticles}
-              health={this.state.healthArticles}
-              local={this.state.localArticles}
-              science={this.state.scienceArticles}
-              technology={this.state.techArticles}
+              currentArticles={this.state.currentArticles}
             />
           </div>
         </div>
