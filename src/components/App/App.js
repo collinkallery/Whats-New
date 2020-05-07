@@ -30,26 +30,42 @@ class App extends Component {
       localArticles: localArticles,
       scienceArticles: scienceArticles,
       techArticles: techArticles,
-      currentArticles: localArticles
+      currentArticles: localArticles,
+      searchedArticles: ''
     }
   }
 
   displayCurrentArticles = (articles) => {
+    let articlesToDisplay = null;
     if (articles === 'local') {
-      this.setState({currentArticles: this.state.localArticles});
+      articlesToDisplay = this.state.localArticles;
+    } else if (articles === 'entertainment') {
+      articlesToDisplay = this.state.entertainmentArticles;
+    } else if (articles === 'health') {
+      articlesToDisplay = this.state.healthArticles;
+    } else if (articles === 'science') {
+      articlesToDisplay = this.state.scienceArticles;
+    } else if (articles === 'tech') {
+      articlesToDisplay = this.state.techArticles;
+    } else {
+      articlesToDisplay = this.state.localArticles;
     }
-    if (articles === 'entertainment') {
-      this.setState({currentArticles: this.state.entertainmentArticles});
-    }
-    if (articles === 'health') {
-      this.setState({currentArticles: this.state.healthArticles});
-    }
-    if (articles === 'science') {
-      this.setState({currentArticles: this.state.scienceArticles});
-    }
-    if (articles === 'tech') {
-      this.setState({currentArticles: this.state.techArticles});
-    }
+    this.setState({
+      currentArticles: articlesToDisplay,
+      searchedArticles: articles
+    })
+  }
+
+  filterArticles = (searchValue) => {
+    this.displayCurrentArticles(this.state.searchedArticles);
+    let filteredArticles = [];
+    let currentArticles = this.state.currentArticles;
+    currentArticles.forEach(article => {
+      if (article.headline.toLowerCase().includes(searchValue.toLowerCase())) {
+        filteredArticles.push(article);
+      }
+      this.setState({currentArticles: filteredArticles})
+    })
   }
 
   render () {
@@ -57,10 +73,13 @@ class App extends Component {
       <div className="app">
         <Header />
         <div className="main">
-          <Menu displayCurrentArticles={this.displayCurrentArticles} />
+          <Menu
+            displayCurrentArticles={this.displayCurrentArticles}
+          />
           <div className="news-container">
             <NewsContainer
               currentArticles={this.state.currentArticles}
+              filterArticles={this.filterArticles}
             />
           </div>
         </div>

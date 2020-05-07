@@ -3,7 +3,7 @@ import NewsArticle from '../NewsArticle/NewsArticle';
 import SearchForm from '../SearchForm/SearchForm';
 import './NewsContainer.css'
 
-const NewsContainer = ({currentArticles}) => {
+const NewsContainer = ({currentArticles, filterArticles}) => {
 
   const articlesToDisplay = currentArticles.map(article => {
     return (
@@ -20,7 +20,7 @@ const NewsContainer = ({currentArticles}) => {
 
   return (
     <div className="article-search-container">
-      <SearchForm />
+      <SearchForm filterArticles={filterArticles} />
       <div className="article-container">
         {articlesToDisplay}
         </div>

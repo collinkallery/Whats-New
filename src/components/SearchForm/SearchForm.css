@@ -3,11 +3,31 @@
 }
 
 #search-articles-input {
-  width: 30%;
+  width: 40%;
   margin: 1vw 1.2vw 1vw auto;
   font-size: 1.3em;
   font-family: 'Open Sans Condensed', sans-serif;
   padding: .2vw .7vw;
   border-radius: 5px;
   border: none;
+}
+
+#search-button {
+  width: 8%;
+  height: 40%;
+  font-size: 1.2em;
+  font-family: 'Open Sans Condensed', sans-serif;
+  align-self: center;
+  padding: .25vw;
+  background-color: #E73B32;
+  color: white;
+  font-style: italic;
+  border: none;
+  border-radius: 5px;
+  margin-right: 1vw;
+}
+
+#search-button:hover {
+  background-color: #E8E9F3;
+  color: black;
 }
